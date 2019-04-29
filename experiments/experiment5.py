@@ -6,6 +6,9 @@ from data_processing.sentence_getter import SentenceGetter
 from data_processing.transformers import transform_char
 from models.keras_lstm_char import BiLSTMChar
 
+MAX_LEN = 75
+MAX_CHAR_LEN = 10
+
 
 def bilstm_char_model_experiment(sentences: List, words: List, chars: List, tags: List, n_words: int, n_tags: int,
                                  n_chars: int, max_len: int, max_len_char: int):
@@ -30,7 +33,6 @@ def bilstm_char_model_experiment(sentences: List, words: List, chars: List, tags
                         max_len_char=max_len_char,
                         nbepochs=5)
     bilstm.train(X, X_char, y)
-   # predict_on_random_sample(bilstm, X, y, words, tags, n_words)
 
     i = 2318
     print(sentences[i])
@@ -55,9 +57,6 @@ if __name__ == '__main__':
     n_words = len(words)
     tags = list(set(data["Tag"].values))
     n_tags = len(tags)
-
-    MAX_LEN = 75
-    MAX_CHAR_LEN = 10
 
     bilstm_char_model_experiment(sentences=sentences,
                                  words=words,

@@ -12,6 +12,7 @@ def bilstm_crf_model_experiment(sentences: List, words: List, tags: List, n_word
     X, y = transform(word2idx, tag2idx, sentences, n_words, n_tags, max_len)
     bilstm = BiLSTMCRF(n_words=n_words, max_len=max_len, n_tags=n_tags)
     bilstm.train(X, y)
+
     i = 2318
     print(sentences[i])
     prediction = bilstm.predict(np.array([X[i]]))

@@ -6,7 +6,7 @@ from data_processing.transformers import sent2features, sent2labels
 from data_processing.sentence_getter import SentenceGetter
 
 
-if __name__ == '__main__':
+def main():
     print('CRF model ...')
     crf = CRF(algorithm='lbfgs',
               c1=0.1,
@@ -21,3 +21,7 @@ if __name__ == '__main__':
     pred = cross_val_predict(estimator=crf, X=X, y=y, cv=3)
     report = flat_classification_report(y_pred=pred, y_true=y)
     print(report)
+
+
+if __name__ == '__main__':
+    main()

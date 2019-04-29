@@ -6,6 +6,8 @@ from data_processing.sentence_getter import SentenceGetter
 from data_processing.transformers import transform
 from models.keras_lstm import BiLSTMNER
 
+MAX_LEN = 50
+
 
 def bilstm_ner_model_experiment(sentences: List, words: List, tags: List, n_words: int, n_tags: int, max_len: int):
     word2idx = {w: i for i, w in enumerate(words)}
@@ -28,7 +30,6 @@ def bilstm_ner_model_experiment(sentences: List, words: List, tags: List, n_word
 
 
 if __name__ == '__main__':
-    MAX_LEN = 50
     getter = SentenceGetter(file_path='../data/ner_dataset.csv')
     data = getter.data
     sentences = getter.sentences
