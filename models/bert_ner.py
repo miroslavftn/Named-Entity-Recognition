@@ -13,8 +13,9 @@ class Trainer:
     """
     Run training for BERT NER model
     """
+
     def __init__(self, model: any, optimizer: Adam, epochs: int, batch_size: int, device, num_labels: int,
-                 train_loader: DataLoader, val_loader: DataLoader=None):
+                 train_loader: DataLoader, val_loader: DataLoader = None):
         self.model = model
         self.optimizer = optimizer
         self.train_loader = train_loader
@@ -92,7 +93,7 @@ class Trainer:
         return eval_acc, eval_loss
 
 
-def create_data_loader(inputs, tags, masks, batch_size:int, mode: str = 'train')-> DataLoader :
+def create_data_loader(inputs, tags, masks, batch_size: int, mode: str = 'train') -> DataLoader:
     """
     Create data loader from inputs, tags and masks
     :param inputs:

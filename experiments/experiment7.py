@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from data_processing.sentence_getter import SentenceGetter
 from models.bert_ner import BertNER
 from models.bert_ner import transform_data, create_data_loader
+
 MAX_LEN = 64
 BATCH_SIZE = 32
 

@@ -1,9 +1,9 @@
 from sklearn.model_selection import cross_val_predict
-from sklearn_crfsuite.metrics import flat_classification_report
 from sklearn_crfsuite import CRF
+from sklearn_crfsuite.metrics import flat_classification_report
 
-from data_processing.transformers import sent2features, sent2labels
 from data_processing.sentence_getter import SentenceGetter
+from data_processing.transformers import sent2features, sent2labels
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
               all_possible_transitions=False)
     getter = SentenceGetter(file_path='../data/ner_dataset.csv')
     sentences = getter.sentences
-    
+
     X = [sent2features(s) for s in sentences]
     y = [sent2labels(s) for s in sentences]
     pred = cross_val_predict(estimator=crf, X=X, y=y, cv=3)

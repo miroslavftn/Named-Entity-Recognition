@@ -1,6 +1,7 @@
 from deeppavlov import configs, build_model
-from pre_trained import BaseNER
 from orderedset import OrderedSet
+
+from pre_trained.base_ner import BaseNER
 
 
 class PavlovNER(BaseNER):

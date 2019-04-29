@@ -1,7 +1,9 @@
+from typing import Dict, List
+
 import numpy as np
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-from typing import Dict, List
+
 
 def word2features(sent, i):
     word = sent[i][0]

@@ -1,12 +1,13 @@
+from typing import List
+
 import numpy as np
 
 from data_processing.sentence_getter import SentenceGetter
-from models.keras_lstm_crf import BiLSTMCRF
 from data_processing.transformers import transform
-from typing import List
+from models.keras_lstm_crf import BiLSTMCRF
 
 
-def bilstm_crf_model_experiment(sentences: List, words: List, tags: List, n_words: int, n_tags: int, max_len: int ):
+def bilstm_crf_model_experiment(sentences: List, words: List, tags: List, n_words: int, n_tags: int, max_len: int):
     word2idx = {w: i + 1 for i, w in enumerate(words)}
     tag2idx = {t: i for i, t in enumerate(tags)}
     X, y = transform(word2idx, tag2idx, sentences, n_words, n_tags, max_len)
@@ -22,7 +23,7 @@ def bilstm_crf_model_experiment(sentences: List, words: List, tags: List, n_word
     print(30 * "=")
     for w, t, pred in zip(X[i], true, prediction[0]):
         if w != 0:
-            print("{:15}: {:5} {}".format(words[w-1], tags[t], tags[pred]))
+            print("{:15}: {:5} {}".format(words[w - 1], tags[t], tags[pred]))
 
 
 if __name__ == '__main__':

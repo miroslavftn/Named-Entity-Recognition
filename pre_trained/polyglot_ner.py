@@ -1,5 +1,6 @@
-from polyglot.text import Text
 from orderedset import OrderedSet
+from polyglot.text import Text
+
 from pre_trained.base_ner import BaseNER
 
 

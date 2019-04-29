@@ -1,6 +1,7 @@
 import spacy
-from pre_trained import BaseNER
 from orderedset import OrderedSet
+
+from pre_trained.base_ner import BaseNER
 
 
 class SpacyNER(BaseNER):
@@ -27,5 +28,3 @@ if __name__ == "__main__":
     res = ner_model.entities('Bob Ross lived in Florida.')
 
     print(res)
-
-

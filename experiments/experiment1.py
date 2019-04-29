@@ -34,6 +34,3 @@ if __name__ == '__main__':
 
     full_classification_report(getter=getter)
     full_classification_rf(getter=getter)
-
-
-

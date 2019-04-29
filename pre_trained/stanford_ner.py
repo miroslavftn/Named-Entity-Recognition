@@ -1,11 +1,13 @@
-from pre_trained import BaseNER
+import os
+import urllib
+import zipfile
+
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
-import os
 from orderedset import OrderedSet
-import urllib
+
 from configs import BASE_DIR
-import zipfile
+from pre_trained.base_ner import BaseNER
 
 
 class StanfordNER(BaseNER):
@@ -30,7 +32,8 @@ class StanfordNER(BaseNER):
                 zip_ref.extractall(stanford_data_dir)
 
         extracted_files_path = os.path.splitext(self.filename)[0]
-        classification_model_path = os.path.join(stanford_data_dir, extracted_files_path, 'classifiers', self.model_name)
+        classification_model_path = os.path.join(stanford_data_dir, extracted_files_path, 'classifiers',
+                                                 self.model_name)
         tagger_jar_path = os.path.join(stanford_data_dir, extracted_files_path, self.jar_name)
         self.st = StanfordNERTagger(classification_model_path, tagger_jar_path, encoding='utf-8')
 
@@ -54,7 +57,6 @@ def download(url, filename):
 
 
 if __name__ == '__main__':
-
     ner_model = StanfordNER()
     res = ner_model.entities("Did Uriah honestly think he could beat The Legend of Zelda in under three hours?")
 

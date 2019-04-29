@@ -2,14 +2,14 @@ import os
 import urllib.request
 
 from allennlp.predictors.predictor import Predictor
+from orderedset import OrderedSet
 
 from configs import BASE_DIR
-from pre_trained import BaseNER
-from orderedset import OrderedSet
+from pre_trained.base_ner import BaseNER
 
 
 class AllenNER(BaseNER):
-    def __init__(self, load_local=True):
+    def __init__(self, load_local=False):
         super().__init__()
         self.load_local = load_local
         self.model_url = "https://s3-us-west-2.amazonaws.com/allennlp/models/ner-model-2018.12.18.tar.gz"

@@ -2,16 +2,14 @@ import keras.backend.tensorflow_backend as K
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-from keras.engine import Layer
-from keras.layers import LSTM, Embedding, Dense, TimeDistributed, Lambda, Bidirectional
+from keras.layers import LSTM, Dense, TimeDistributed, Lambda, Bidirectional
 from keras.layers.merge import add
 from keras.models import Model, Input
-from sklearn.model_selection import train_test_split
 
 
 class ELMoNER(object):
 
-    def __init__(self, n_words: int, max_len: int, n_tags: int, batch_size: int = 32,nbepochs: int = 5):
+    def __init__(self, n_words: int, max_len: int, n_tags: int, batch_size: int = 32, nbepochs: int = 5):
         self.model = None
         self.n_words = n_words
         self.n_tags = n_tags
@@ -50,7 +48,7 @@ class ELMoNER(object):
     def train(self, X_tr, y_tr, X_val, y_val):
         self.model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
         history = self.model.fit(np.array(X_tr), y_tr, validation_data=(np.array(X_val), y_val),
-                    batch_size=self.batch_size, epochs=5, verbose=1)
+                                 batch_size=self.batch_size, epochs=5, verbose=1)
         return history
 
     def predict(self, x):
